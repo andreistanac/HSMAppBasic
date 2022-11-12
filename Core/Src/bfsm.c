@@ -72,6 +72,16 @@ QState bFSM_counter0(bFSM_t * const me, QEvent const * const e) {
 		case K2_SIG:
 			ret = Q_TRAN(bFSM_counter1);
 			break;
+		case ROT_UP_SIG:
+			me->counter++;
+			Digit_Number(me->counter);
+			ret = Q_RET_HANDLED;
+			break;
+		case ROT_DN_SIG:
+			if (me->counter) me->counter--;
+			Digit_Number(me->counter);
+			ret = Q_RET_HANDLED;
+			break;
 		default:
 			ret = Q_SUPER(bFSM_cnt_tmr);
 			break;

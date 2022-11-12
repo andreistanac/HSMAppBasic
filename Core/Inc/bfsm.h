@@ -16,7 +16,9 @@ enum {
 	K1_SIG,
 	K2_SIG,
 	K3_SIG,
-	TIMER_SIG
+	TIMER_SIG,
+	ROT_UP_SIG,
+	ROT_DN_SIG
 };
 
 typedef struct {

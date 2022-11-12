@@ -22,4 +22,9 @@ void Digit_SymolPos(uint8_t value, uint8_t pos);
 
 QEvent Event_Update(void);
 
+extern uint32_t timer_key2;
+extern uint32_t timer_key3;
+
+extern unsigned int timer_enc;
+
 #endif /* INC_UTIL_H_ */
