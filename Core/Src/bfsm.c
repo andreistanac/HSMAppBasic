@@ -7,6 +7,7 @@
 #include "hfsm.h"
 #include "bfsm.h"
 #include "util.h"
+#include "main.h"
 
 static bFSM_t bFSM;
 
@@ -39,6 +40,7 @@ QState bFSM_idle(bFSM_t * const me, QEvent const * const e) {
 	int ret = Q_RET_IGNORED;
 	switch(e->sig) {
 		case Q_ENTRY_SIG:
+			HAL_TIM_PWM_Stop(&htim4, TIM_CHANNEL_3);
 			Digit_SymolPos(DIGIT_n, 1);
 			Digit_NumberPos(me->mode, 0);
 			ret = Q_RET_HANDLED;
@@ -107,6 +109,12 @@ QState bFSM_timer(bFSM_t * const me, QEvent const * const e) {
 	int ret = Q_RET_IGNORED;
 	switch(e->sig) {
 		case Q_ENTRY_SIG:
+			// HAL_TIM_PWM_ConfigChannel(&htim4, sConfig, TIM_CHANNEL_3);
+
+			TIM4->ARR = (me->counter % 2 == 0) ? 4000 : 5333;
+			TIM4->CCR3 = ((me->counter % 2 == 0) ? 4000 : 5333 ) / 2;
+
+			HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3);
 			Digit_Number(me->timer);
 			ret = Q_RET_HANDLED;
 			break;

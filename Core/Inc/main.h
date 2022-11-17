@@ -49,6 +49,8 @@ extern uint32_t timer;
 
 /* USER CODE END EM */
 
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
+
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
@@ -76,6 +78,7 @@ void Error_Handler(void);
 #define K1_Pin GPIO_PIN_7
 #define K1_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
+extern TIM_HandleTypeDef htim4;
 
 /* USER CODE END Private defines */
 

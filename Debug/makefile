@@ -60,8 +60,8 @@ all: main-build
 main-build: HSMApp.elf secondary-outputs
 
 # Tool invocations
-HSMApp.elf HSMApp.map: $(OBJS) $(USER_OBJS) C:\Users\worker\STM32CubeIDE\workspace_1.10.1\HSMApp\STM32F407ZGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "HSMApp.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\worker\STM32CubeIDE\workspace_1.10.1\HSMApp\STM32F407ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="HSMApp.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+HSMApp.elf HSMApp.map: $(OBJS) $(USER_OBJS) C:\Users\student\Projects\HSMAppBasic\STM32F407ZGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "HSMApp.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\student\Projects\HSMAppBasic\STM32F407ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="HSMApp.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
